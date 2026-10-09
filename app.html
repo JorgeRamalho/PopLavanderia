@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2034%2034%22%20role%3D%22img%22%20aria-label%3D%22PopLavanderia%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22pop-brand%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%2234%22%20y2%3D%2234%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232de6d0%22%2F%3E%20%3Cstop%20offset%3D%220.46%22%20stop-color%3D%22%234f8cff%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff4f98%22%2F%3E%20%3C%2FlinearGradient%3E%20%3Cfilter%20id%3D%22pop-glow%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%20%3CfeDropShadow%20dx%3D%220%22%20dy%3D%220%22%20stdDeviation%3D%221.2%22%20flood-color%3D%22%232de6d0%22%20flood-opacity%3D%220.35%22%2F%3E%20%3C%2Ffilter%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%2234%22%20height%3D%2234%22%20rx%3D%2212%22%20fill%3D%22url(%23pop-brand)%22%20filter%3D%22url(%23pop-glow)%22%2F%3E%20%3Ccircle%20cx%3D%2210.2%22%20cy%3D%2211.9%22%20r%3D%222.72%22%20fill%3D%22%23ffffff%22%2F%3E%20%3Ccircle%20cx%3D%2221.08%22%20cy%3D%229.52%22%20r%3D%223.06%22%20fill%3D%22%23ff4f98%22%20fill-opacity%3D%220.9%22%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml" />
+    <script defer src="header-scroll.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App do cliente | PopLavanderia</title>
+    <meta name="description" content="Escolha a unidade, recarregue créditos e inicie lavadoras ou secadoras com o tempo de cada ciclo na tela." />
+    <link rel="canonical" href="https://poplavanderia.com.br/app.html" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Pop<span>Lavanderia</span></span></a>
+        <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <nav class="site-nav" aria-label="Principal">
+          <a href="/">Início</a><a href="/unidades.html">Unidades</a><a href="/servicos.html">Serviços</a><a href="/sobre.html">Sobre</a><a href="/app.html">App</a>
+        </nav>
+        <div class="auth-slot"><a class="btn btn-ghost" href="/login.html">Entrar</a><a class="btn btn-primary" href="/cadastro.html">Criar conta</a></div>
+      </div>
+    </header>
+    <main id="conteudo" class="container app-shell">
+      <aside class="card wallet-card">
+        <p class="eyebrow">Seu saldo</p>
+        <p class="pack-price" data-wallet data-live-credits>0 créditos</p>
+        <p class="muted" data-suggest>Escolha lavar ou secar. A máquina só parte com créditos.</p>
+        <nav class="app-tabs" aria-label="Área do app">
+          <button type="button" data-view="maquinas">Máquinas</button>
+          <button type="button" data-view="recarga">Recarga</button>
+          <button type="button" data-view="historico">Histórico</button>
+        </nav>
+        <a class="btn btn-ghost" href="/conta.html">Meus dados</a>
+      </aside>
+
+      <section>
+        <div data-view="maquinas">
+          <p class="eyebrow">O que você precisa agora?</p>
+          <h1>Toque na máquina livre. O restante o app conduz.</h1>
+          <label>Unidade
+            <select id="loja"></select>
+          </label>
+          <div class="filter-row" style="margin:1rem 0">
+            <button type="button" class="is-on" data-filter="all">Todas</button>
+            <button type="button" data-filter="wash">Lavar</button>
+            <button type="button" data-filter="dry">Secar</button>
+            <button type="button" data-filter="free">Só livres</button>
+          </div>
+          <div class="machine-grid" data-machines></div>
+          <div class="card" data-comfort style="margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:0;overflow:hidden"></div>
+        </div>
+
+        <div data-view="recarga" hidden>
+          <p class="eyebrow">Cobrança em créditos</p>
+          <h1>Recarregue o tanto que a semana pede.</h1>
+          <p class="muted">1 real vira 1 crédito. PIX ou cartão, sem surpresa na máquina.</p>
+          <div class="pack-grid" data-packages></div>
+        </div>
+
+        <div data-view="historico" hidden>
+          <p class="eyebrow">Seus ciclos</p>
+          <h1>Tudo o que já girou com os seus créditos.</h1>
+          <h2>Máquinas</h2>
+          <ul class="history-list" data-cycle-history></ul>
+          <h2>Carteira</h2>
+          <ul class="history-list" data-ledger></ul>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="modal-ciclo" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="ciclo-titulo">
+        <h2 id="ciclo-titulo" data-modal-title>Confirmar ciclo</h2>
+        <div data-modal-copy></div>
+        <label class="check" data-extra-dry hidden>
+          <input type="checkbox" /> Somar 10 min de secagem (+4 créditos)
+        </label>
+        <div class="card-actions">
+          <button class="btn btn-ghost" type="button" data-close-modal>Cancelar</button>
+          <button class="btn btn-primary" type="button" data-confirm-cycle>Confirmar e iniciar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-pagamento" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="pag-titulo">
+        <h2 id="pag-titulo">Como prefere pagar?</h2>
+        <p data-pay-total></p>
+        <div class="pix-box" aria-hidden="true"></div>
+        <button class="btn btn-primary" type="button" data-pay-pix>Pagar com PIX</button>
+        <form id="form-cartao" style="margin-top:1rem">
+          <label>Número do cartão<input name="numero" inputmode="numeric" required /></label>
+          <label>Nome<input name="nome" required /></label>
+          <div class="form-grid">
+            <label>Validade<input name="validade" placeholder="MM/AA" required /></label>
+            <label>CVV<input name="cvv" inputmode="numeric" maxlength="4" required /></label>
+          </div>
+          <button class="btn btn-ghost" type="submit">Pagar com cartão</button>
+        </form>
+        <button class="btn btn-ghost" type="button" data-close-modal style="margin-top:0.8rem">Fechar</button>
+      </div>
+    </div>
+    <script type="module" src="/src/js/pages/app.js"></script>
+  </body>
+</html>

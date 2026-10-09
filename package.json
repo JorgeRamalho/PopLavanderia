@@ -1,0 +1,18 @@
+{
+  "name": "projeto-poplavanderia",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:desktop": "playwright test --project=desktop"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "vite": "^8.3.0"
+  }
+}
