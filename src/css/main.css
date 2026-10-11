@@ -335,9 +335,10 @@ p {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2.5rem;
   align-items: center;
+  min-width: 0;
 }
 
 .hero h1 {
@@ -368,24 +369,31 @@ p {
 
 .hero-visual {
   position: relative;
-  min-height: 420px;
+  width: 100%;
+  max-width: 100%;
   border-radius: 36px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  background: var(--mist);
 }
 
 .hero-visual img {
+  display: block;
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1400 / 788;
+  max-height: min(56vh, 560px);
   object-fit: cover;
   object-position: center 42%;
-  min-height: 420px;
 }
 
 .hero-visual::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
   background: linear-gradient(180deg, transparent 55%, rgba(15, 29, 46, 0.22));
 }
 
@@ -1132,20 +1140,7 @@ input[aria-invalid="true"] {
 }
 
 .gallery-meta {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.9rem;
-  align-items: center;
   margin-top: 0.9rem;
-}
-
-.gallery-count {
-  margin: 0;
-  min-width: 5.2rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--navy-800);
 }
 
 .gallery-progress {
@@ -1162,16 +1157,6 @@ input[aria-invalid="true"] {
   border-radius: inherit;
   background: var(--grad-brand);
   animation: gallery-fill var(--gallery-ms) linear forwards;
-}
-
-.gallery-pause {
-  border: 1px solid var(--line);
-  background: var(--white);
-  color: var(--ink);
-  border-radius: 999px;
-  padding: 0.45rem 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 .gallery-thumbs {
@@ -1360,23 +1345,6 @@ input[aria-invalid="true"] {
     height: 42px;
   }
 
-  .gallery-meta {
-    grid-template-columns: auto auto;
-  }
-
-  .gallery-progress {
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-
-  .gallery-count {
-    grid-row: 2;
-  }
-
-  .gallery-pause {
-    grid-row: 2;
-    justify-self: end;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

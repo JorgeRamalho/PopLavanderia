@@ -5,7 +5,7 @@ import { mountCarousel } from "../ui/carousel.js";
 import { mountRegistrationForm, scrollToRegistrationIfHash } from "../ui/mount-registration-form.js";
 
 const heroImg = document.querySelector(".hero-visual img");
-if (heroImg) {
+if (heroImg instanceof HTMLImageElement) {
   heroImg.src = heroPrincipal;
 }
 

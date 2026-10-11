@@ -55,6 +55,8 @@ Links internos, canonical e sitemap usam o endereço curto (`/login.html`), nunc
 
 Imagens, favicon, `robots.txt` e `sitemap.xml` ficam em `public/`. O navegador pede `/images/hero-principal.png` e `/favicon.svg`. O HTML referencia esses caminhos com barra no início.
 
+A foto do hero é editada em `src/assets/hero-principal.png`. Os scripts `predev` e `prebuild` copiam esse arquivo para `public/images/hero-principal.png` (`scripts/sync-hero-image.mjs`), para o Vite e o Netlify servirem sempre o mesmo caminho estável, sem depender de JavaScript para trocar o `src`.
+
 `header-scroll.js` também fica em `public/`, porque as páginas o carregam com `<script defer>`. A versão em `src/js/header-scroll.js` é o módulo importado por `src/js/boot.js`. As duas se protegem com `window.__popHeaderScrollInit` para não registrar o scroll duas vezes.
 
 ## O que não versionar

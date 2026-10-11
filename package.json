@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/sync-hero-image.mjs",
+    "prebuild": "node scripts/sync-hero-image.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
