@@ -1,20 +1,53 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
+import { pageRoutes } from "./scripts/page-routes.mjs";
+
+const root = import.meta.dirname;
+
+function pageAliasPlugin() {
+  const aliases = new Map(
+    Object.entries(pageRoutes).map(([url, file]) => [url, `/${file}`]),
+  );
+
+  const rewrite = (req, _res, next) => {
+    if (!req.url) {
+      next();
+      return;
+    }
+
+    const queryAt = req.url.indexOf("?");
+    const pathname = queryAt === -1 ? req.url : req.url.slice(0, queryAt);
+    const search = queryAt === -1 ? "" : req.url.slice(queryAt);
+    const target = aliases.get(pathname);
+    if (target) req.url = `${target}${search}`;
+    next();
+  };
+
+  return {
+    name: "page-aliases",
+    configureServer(server) {
+      server.middlewares.use(rewrite);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(rewrite);
+    },
+  };
+}
+
+const pageInput = Object.fromEntries(
+  Object.values(pageRoutes).map((file) => {
+    const name = file.split("/").pop().replace(/\.html$/, "");
+    return [name, resolve(root, file)];
+  }),
+);
 
 export default defineConfig({
+  plugins: [pageAliasPlugin()],
   build: {
     rollupOptions: {
       input: {
-        main: resolve(import.meta.dirname, "index.html"),
-        sobre: resolve(import.meta.dirname, "sobre.html"),
-        servicos: resolve(import.meta.dirname, "servicos.html"),
-        unidades: resolve(import.meta.dirname, "unidades.html"),
-        cadastro: resolve(import.meta.dirname, "cadastro.html"),
-        login: resolve(import.meta.dirname, "login.html"),
-        recuperar: resolve(import.meta.dirname, "recuperar-senha.html"),
-        redefinir: resolve(import.meta.dirname, "redefinir-senha.html"),
-        app: resolve(import.meta.dirname, "app.html"),
-        conta: resolve(import.meta.dirname, "conta.html"),
+        main: resolve(root, "index.html"),
+        ...pageInput,
       },
     },
   },

@@ -3,25 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2034%2034%22%20role%3D%22img%22%20aria-label%3D%22PopLavanderia%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22pop-brand%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%2234%22%20y2%3D%2234%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232de6d0%22%2F%3E%20%3Cstop%20offset%3D%220.46%22%20stop-color%3D%22%234f8cff%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff4f98%22%2F%3E%20%3C%2FlinearGradient%3E%20%3Cfilter%20id%3D%22pop-glow%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%20%3CfeDropShadow%20dx%3D%220%22%20dy%3D%220%22%20stdDeviation%3D%221.2%22%20flood-color%3D%22%232de6d0%22%20flood-opacity%3D%220.35%22%2F%3E%20%3C%2Ffilter%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%2234%22%20height%3D%2234%22%20rx%3D%2212%22%20fill%3D%22url(%23pop-brand)%22%20filter%3D%22url(%23pop-glow)%22%2F%3E%20%3Ccircle%20cx%3D%2210.2%22%20cy%3D%2211.9%22%20r%3D%222.72%22%20fill%3D%22%23ffffff%22%2F%3E%20%3Ccircle%20cx%3D%2221.08%22%20cy%3D%229.52%22%20r%3D%223.06%22%20fill%3D%22%23ff4f98%22%20fill-opacity%3D%220.9%22%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml" />
-    <script defer src="header-scroll.js"></script>
+    <script defer src="/header-scroll.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unidades em Curitiba | PopLavanderia</title>
-    <meta name="description" content="Encontre a PopLavanderia no Batel, Água Verde, Centro Cívico, Ecoville, Santa Felicidade, Portão, Bigorrilho e Cabral. Lounge e máquinas em cada ponto." />
-    <link rel="canonical" href="https://poplavanderia.com.br/unidades.html" />
+    <title>Entrar | PopLavanderia</title>
+    <meta name="description" content="Acesse sua conta PopLavanderia para ver créditos, iniciar lavadoras e secadoras e acompanhar o tempo de cada ciclo." />
+    <link rel="canonical" href="https://poplavanderia.com.br/login.html" />
     <link rel="stylesheet" href="/src/css/main.css" />
     <meta name="theme-color" content="#ffffff" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Unidades PopLavanderia em Curitiba",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Pop Batel"},
-          {"@type": "ListItem", "position": 2, "name": "Pop Água Verde"},
-          {"@type": "ListItem", "position": 3, "name": "Pop Centro Cívico"}
-        ]
-      }
-    </script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -32,18 +20,31 @@
         <nav class="site-nav" aria-label="Principal">
           <a href="/">Início</a><a href="/unidades.html">Unidades</a><a href="/servicos.html">Serviços</a><a href="/sobre.html">Sobre</a><a href="/app.html">App</a>
         </nav>
-        <div class="auth-slot"><a class="btn btn-ghost" href="/login.html">Entrar</a><a class="btn btn-primary" href="/cadastro.html">Criar conta</a></div>
+        <div class="auth-slot"><a class="btn btn-ghost" href="/login.html">Entrar</a><a class="btn btn-primary" href="/#cadastro">Criar conta</a></div>
       </div>
     </header>
-    <main id="conteudo" class="section">
-      <div class="container">
-        <p class="eyebrow">Pontos na cidade</p>
-        <h1>Oito lojas. O mesmo cuidado. Um lounge diferente em cada bairro.</h1>
-        <p class="muted">Escolha a unidade, veja o conforto do espaço e abra as máquinas no app.</p>
-        <div class="store-grid" data-store-grid style="margin-top:2rem"></div>
-      </div>
+    <main id="conteudo">
+      <form id="form-login" class="form-card card" novalidate>
+        <p class="eyebrow">Área do cliente</p>
+        <h1>Que bom te ver de novo.</h1>
+        <p class="muted">Entre para escolher a máquina, recarregar créditos e acompanhar o ciclo.</p>
+        <label>E-mail
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>Senha
+          <input name="senha" type="password" autocomplete="current-password" required />
+        </label>
+        <label class="check"><input name="lembrar" type="checkbox" /> Lembrar de mim neste aparelho</label>
+        <p class="field-error" data-login-error></p>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+        <div class="card-actions" style="margin-top:1rem">
+          <a href="/recuperar-senha.html">Esqueci a senha</a>
+          <a href="/#cadastro">Criar conta</a>
+        </div>
+        <button class="btn btn-ghost" type="button" data-demo style="margin-top:1rem">Usar conta demonstração</button>
+        <p class="muted">Demonstração: ana@poplavanderia.com · Pop@1234</p>
+      </form>
     </main>
-    <footer class="site-footer"><div class="container"><p class="muted">© <span data-year></span> PopLavanderia</p></div></footer>
-    <script type="module" src="/src/js/pages/unidades.js"></script>
+    <script type="module" src="/src/js/pages/login.js"></script>
   </body>
 </html>

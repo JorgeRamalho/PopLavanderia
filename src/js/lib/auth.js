@@ -1,7 +1,8 @@
-import { uid } from "./format.js";
 import { hashSecret } from "./crypto.js";
+import { onlyDigits, uid } from "./format.js";
+import { validateRegistration } from "./register-form.js";
 import { read, write } from "./storage.js";
-import { isValidCPF, isValidEmail, isValidPhone, isStrongPassword, isAdult, isValidCEP } from "./validation.js";
+import { isStrongPassword } from "./validation.js";
 
 const USERS_KEY = "pop.users";
 const RESET_KEY = "pop.resetTokens";
@@ -31,28 +32,10 @@ export function saveUser(updated) {
 
 export async function registerUser(payload) {
   const email = String(payload.email ?? "").trim().toLowerCase();
-  const errors = {};
+  const errors = validateRegistration(payload);
 
-  if (!payload.nomeCompleto || payload.nomeCompleto.trim().split(" ").length < 2) {
-    errors.nomeCompleto = "Informe nome e sobrenome.";
-  }
-  if (!isValidCPF(payload.cpf)) errors.cpf = "CPF inválido.";
-  if (!isValidEmail(email)) errors.email = "E-mail inválido.";
-  if (!isValidPhone(payload.telefone)) errors.telefone = "Telefone inválido.";
-  if (!isAdult(payload.dataNascimento)) errors.dataNascimento = "É preciso ter 16 anos ou mais.";
-  if (!isValidCEP(payload.cep)) errors.cep = "CEP inválido.";
-  if (!payload.logradouro) errors.logradouro = "Informe o endereço.";
-  if (!payload.numero) errors.numero = "Informe o número.";
-  if (!payload.bairro) errors.bairro = "Informe o bairro.";
-  if (!payload.cidade) errors.cidade = "Informe a cidade.";
-  if (!payload.estado) errors.estado = "Informe o estado.";
-  if (!isStrongPassword(payload.senha)) {
-    errors.senha = "Use 8+ caracteres, com letra, número e símbolo.";
-  }
-  if (payload.senha !== payload.confirmarSenha) errors.confirmarSenha = "As senhas não coincidem.";
-  if (!payload.aceitaTermos) errors.aceitaTermos = "Aceite os termos para criar a conta.";
   if (findUserByEmail(email)) errors.email = "Este e-mail já possui cadastro.";
-  if (listUsers().some((user) => user.cpf === String(payload.cpf).replace(/\D/g, ""))) {
+  if (listUsers().some((user) => user.cpf === onlyDigits(payload.cpf))) {
     errors.cpf = "Este CPF já possui cadastro.";
   }
 
@@ -63,22 +46,34 @@ export async function registerUser(payload) {
   const user = {
     id: uid("usr"),
     nomeCompleto: payload.nomeCompleto.trim(),
-    cpf: String(payload.cpf).replace(/\D/g, ""),
+    nomeSocial: (payload.nomeSocial ?? "").trim(),
+    cpf: onlyDigits(payload.cpf),
+    rg: (payload.rg ?? "").trim(),
+    genero: payload.genero ?? "prefiro_nao_informar",
     email,
-    telefone: String(payload.telefone).replace(/\D/g, ""),
+    telefone: onlyDigits(payload.telefone),
+    telefoneSecundario: payload.telefoneSecundario ? onlyDigits(payload.telefoneSecundario) : "",
+    contatoEmergencia: {
+      nome: (payload.contatoEmergenciaNome ?? "").trim(),
+      telefone: payload.contatoEmergenciaTelefone ? onlyDigits(payload.contatoEmergenciaTelefone) : "",
+    },
     dataNascimento: payload.dataNascimento,
     endereco: {
-      cep: String(payload.cep).replace(/\D/g, ""),
+      cep: onlyDigits(payload.cep),
       logradouro: payload.logradouro.trim(),
       numero: payload.numero.trim(),
       complemento: (payload.complemento ?? "").trim(),
       bairro: payload.bairro.trim(),
       cidade: payload.cidade.trim(),
       estado: payload.estado.trim().toUpperCase(),
+      referencia: (payload.referencia ?? "").trim(),
     },
+    unidadePreferida: payload.unidadePreferida,
+    comoConheceu: payload.comoConheceu ?? "",
     passwordHash: await hashSecret(`${email}:${payload.senha}`),
     credits: 20,
     aceitaNovidades: Boolean(payload.aceitaNovidades),
+    aceitaPoliticaPrivacidade: Boolean(payload.aceitaPoliticaPrivacidade),
     createdAt: Date.now(),
   };
 

@@ -6,7 +6,6 @@ const pages = [
   { path: "/sobre.html", title: /Quem somos/, h1: /lavanderia saiu do porão/i },
   { path: "/servicos.html", title: /Serviços/, h1: /ciclo da máquina/i },
   { path: "/unidades.html", title: /Unidades/, h1: /Oito lojas/ },
-  { path: "/cadastro.html", title: /Criar conta/, h1: /Vamos te conhecer/ },
   { path: "/login.html", title: /Entrar/, h1: /te ver de novo/i },
 ];
 
@@ -36,6 +35,14 @@ test.describe("SEO, estrutura e identidade", () => {
       await expect(images.nth(index)).toHaveAttribute("alt", /./);
     }
   });
+
+  test("home exibe a foto principal do hero", async ({ page }) => {
+    await page.goto("/");
+    const hero = page.locator(".hero-visual img");
+    await expect(hero).toBeVisible();
+    const width = await hero.evaluate((img) => img.naturalWidth);
+    expect(width).toBeGreaterThan(0);
+  });
 });
 
 test.describe("Usabilidade e fluxos", () => {
@@ -48,23 +55,28 @@ test.describe("Usabilidade e fluxos", () => {
     await expect(page.locator(".machine-card").first()).toBeVisible();
   });
 
-  test("cadastro em 3 etapas e créditos de boas-vindas", async ({ page }) => {
+  test("cadastro em 4 etapas e créditos de boas-vindas", async ({ page }) => {
     const stamp = Date.now();
-    await page.goto("/cadastro.html");
+    const email = `marina.${stamp}@poplavanderia.com`;
+    await page.goto("/#cadastro");
     await page.locator('[name="nomeCompleto"]').fill("Marina Pop Lima");
     await page.locator('[name="cpf"]').fill("111.444.777-35");
-    await page.locator('[name="email"]').fill(`marina.${stamp}@poplavanderia.com`);
-    await page.locator('[name="telefone"]').fill("(41) 99999-2026");
     await page.locator('[name="dataNascimento"]').fill("1992-05-20");
-    await page.getByRole("button", { name: "Continuar para o endereço" }).click();
+    await page.getByRole("button", { name: "Continuar para contato" }).click();
+    await page.locator('[name="email"]').fill(email);
+    await page.locator('[name="confirmarEmail"]').fill(email);
+    await page.locator('[name="telefone"]').fill("(41) 99999-2026");
+    await page.getByRole("button", { name: "Continuar para endereço" }).click();
     await page.locator('[name="cep"]').fill("80420-090");
     await page.locator('[name="numero"]').fill("100");
     await page.locator('[name="logradouro"]').fill("Avenida do Batel");
     await page.locator('[name="bairro"]').fill("Batel");
-    await page.getByRole("button", { name: "Criar acesso" }).click();
+    await page.locator('[name="unidadePreferida"]').selectOption("batel");
+    await page.getByRole("button", { name: "Continuar para senha" }).click();
     await page.locator('[name="senha"]').fill("Pop@1234");
     await page.locator('[name="confirmarSenha"]').fill("Pop@1234");
     await page.locator('[name="aceitaTermos"]').check();
+    await page.locator('[name="aceitaPoliticaPrivacidade"]').check();
     await page.getByRole("button", { name: "Criar conta e ganhar 20 créditos" }).click();
     await expect(page).toHaveURL(/app\.html/, { timeout: 15000 });
     await expect(page.locator("[data-wallet]")).toHaveText(/20 créditos/);

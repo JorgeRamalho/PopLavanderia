@@ -17,9 +17,14 @@ export async function ensureSeed() {
     const demoUser = {
       id: "usr_demo_ana",
       nomeCompleto: "Ana Pop Souza",
+      nomeSocial: "",
       cpf: "39053344705",
+      rg: "",
+      genero: "prefiro_nao_informar",
       email,
       telefone: "41999990026",
+      telefoneSecundario: "",
+      contatoEmergencia: { nome: "", telefone: "" },
       dataNascimento: "1994-04-12",
       endereco: {
         cep: "80420090",
@@ -29,10 +34,14 @@ export async function ensureSeed() {
         bairro: "Batel",
         cidade: "Curitiba",
         estado: "PR",
+        referencia: "",
       },
+      unidadePreferida: "batel",
+      comoConheceu: "indicacao",
       passwordHash: await hashSecret(`${email}:${DEMO_ACCOUNT.password}`),
       credits: 80,
       aceitaNovidades: true,
+      aceitaPoliticaPrivacidade: true,
       createdAt: Date.now() - 1000 * 60 * 60 * 24 * 18,
     };
     write("pop.users", [...listUsers(), demoUser]);

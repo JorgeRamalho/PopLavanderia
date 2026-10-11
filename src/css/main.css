@@ -642,10 +642,170 @@ p {
   margin: 2.5rem auto 4rem;
 }
 
+.form-card--wide {
+  width: min(880px, 100%);
+}
+
+.section-cadastro {
+  background: var(--grad-soft);
+  border-top: 1px solid var(--line);
+  padding-bottom: 2rem;
+}
+
+.section-cadastro .container {
+  display: flex;
+  justify-content: center;
+}
+
+.section-cadastro .form-card {
+  margin: 0 auto;
+  width: min(880px, 100%);
+}
+
+#form-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+#form-cadastro > .progress {
+  width: 100%;
+  margin: 0.5rem 0 0;
+}
+
+#form-cadastro [data-step] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+#form-cadastro .card-actions {
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+#form-cadastro .form-fieldset {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 0 1.25rem;
+}
+
+#form-cadastro .form-grid {
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
+#form-cadastro .form-field {
+  display: grid;
+  grid-template-rows: auto auto minmax(1.1em, auto);
+  gap: 0.35rem;
+  min-width: 0;
+  margin: 0;
+  align-content: start;
+}
+
+#form-cadastro .form-field:has(.password-meter) {
+  grid-template-rows: auto auto auto minmax(1.1em, auto);
+}
+
+#form-cadastro label.field-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  margin: 0;
+  min-height: 3.15rem;
+}
+
+#form-cadastro .form-field.span-2 label.field-label {
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+#form-cadastro label.field-label .label-hint {
+  white-space: nowrap;
+}
+
+#form-cadastro .form-field input,
+#form-cadastro .form-field select {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 2.85rem;
+}
+
+#form-cadastro .form-field .field-error {
+  margin: 0;
+}
+
+#form-cadastro .form-grid .form-field.span-2 {
+  grid-column: 1 / -1;
+}
+
+.form-grid label:not(.field-label) {
+  margin-bottom: 0;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#form-cadastro .form-fieldset--checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+#form-cadastro .form-fieldset--checks label.check {
+  margin-bottom: 0;
+}
+
+#form-cadastro .form-fieldset--checks .field-error {
+  margin-top: -0.35rem;
+}
+
+.form-fieldset {
+  border: 0;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  min-width: 0;
+}
+
+.form-fieldset legend {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  padding: 0;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.9rem;
+}
+
+.form-grid .span-2 {
+  grid-column: 1 / -1;
+}
+
+.label-hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 label {
@@ -819,6 +979,15 @@ input[aria-invalid="true"] {
 
 .gallery {
   padding-top: 1.2rem;
+}
+
+.gallery--lead {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.gallery--lead + .hero {
+  padding-top: 2.75rem;
 }
 
 .gallery-head {
@@ -1102,6 +1271,15 @@ input[aria-invalid="true"] {
   .form-grid,
   .grid-2 {
     grid-template-columns: 1fr;
+  }
+
+  #form-cadastro .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #form-cadastro label.field-label {
+    min-height: 0;
+    justify-content: flex-start;
   }
 
   .nav-toggle {

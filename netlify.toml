@@ -2,6 +2,53 @@
   command = "npm run build"
   publish = "dist"
 
+# Endereços públicos estáveis. O arquivo vive em pages/; a URL antiga continua valendo.
+# Mantenha esta lista igual a scripts/page-routes.mjs.
+[[redirects]]
+  from = "/sobre.html"
+  to = "/pages/institucional/sobre.html"
+  status = 200
+
+[[redirects]]
+  from = "/servicos.html"
+  to = "/pages/institucional/servicos.html"
+  status = 200
+
+[[redirects]]
+  from = "/unidades.html"
+  to = "/pages/institucional/unidades.html"
+  status = 200
+
+[[redirects]]
+  from = "/login.html"
+  to = "/pages/acesso/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/cadastro.html"
+  to = "/pages/acesso/cadastro.html"
+  status = 200
+
+[[redirects]]
+  from = "/recuperar-senha.html"
+  to = "/pages/acesso/recuperar-senha.html"
+  status = 200
+
+[[redirects]]
+  from = "/redefinir-senha.html"
+  to = "/pages/acesso/redefinir-senha.html"
+  status = 200
+
+[[redirects]]
+  from = "/app.html"
+  to = "/pages/app/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/conta.html"
+  to = "/pages/app/conta.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2034%2034%22%20role%3D%22img%22%20aria-label%3D%22PopLavanderia%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22pop-brand%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%2234%22%20y2%3D%2234%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232de6d0%22%2F%3E%20%3Cstop%20offset%3D%220.46%22%20stop-color%3D%22%234f8cff%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff4f98%22%2F%3E%20%3C%2FlinearGradient%3E%20%3Cfilter%20id%3D%22pop-glow%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%20%3CfeDropShadow%20dx%3D%220%22%20dy%3D%220%22%20stdDeviation%3D%221.2%22%20flood-color%3D%22%232de6d0%22%20flood-opacity%3D%220.35%22%2F%3E%20%3C%2Ffilter%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%2234%22%20height%3D%2234%22%20rx%3D%2212%22%20fill%3D%22url(%23pop-brand)%22%20filter%3D%22url(%23pop-glow)%22%2F%3E%20%3Ccircle%20cx%3D%2210.2%22%20cy%3D%2211.9%22%20r%3D%222.72%22%20fill%3D%22%23ffffff%22%2F%3E%20%3Ccircle%20cx%3D%2221.08%22%20cy%3D%229.52%22%20r%3D%223.06%22%20fill%3D%22%23ff4f98%22%20fill-opacity%3D%220.9%22%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml" />
-    <script defer src="header-scroll.js"></script>
+    <script defer src="/header-scroll.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PopLavanderia | Lave, seque e relaxe em Curitiba</title>
     <meta name="description" content="Rede de lavanderias self-service em Curitiba. Lave e seque pelo app, recarregue créditos e espere no lounge com café, Wi-Fi e conforto." />
@@ -45,47 +45,17 @@
         </nav>
         <div class="auth-slot">
           <a class="btn btn-ghost" href="/login.html">Entrar</a>
-          <a class="btn btn-primary" href="/cadastro.html">Criar conta</a>
+          <a class="btn btn-primary" href="#cadastro">Criar conta</a>
         </div>
       </div>
     </header>
 
     <main id="conteudo">
-      <section class="hero">
-        <canvas class="hero-canvas" data-bubbles aria-hidden="true"></canvas>
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Curitiba · self-service inteligente</p>
-            <h1>Lave e seque no seu tempo, em qualquer ponto da cidade.</h1>
-            <p class="lede">A PopLavanderia une máquinas com tempo certo, cobrança em créditos pelo celular e um lounge para esperar sem pressa.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-lg" href="/cadastro.html">Começar a lavar</a>
-              <a class="btn btn-ghost btn-lg" href="/unidades.html">Ver unidades</a>
-            </div>
-            <div class="hero-stats" aria-label="Números da rede">
-              <span>8 unidades</span>
-              <span>Lavar 32 a 45 min</span>
-              <span>Secar 20 a 50 min</span>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <img
-              src="images/hero-principal.png"
-              alt="Lavanderia self-service com lavadoras, parede azul e laranja e identidade Lava &amp; Seca"
-              width="1400"
-              height="788"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section class="section gallery" aria-labelledby="galeria-titulo">
+      <section class="section gallery gallery--lead" aria-labelledby="galeria-titulo">
         <div class="container">
           <div class="section-head gallery-head">
             <p class="eyebrow">Por dentro da rede</p>
-            <h2 id="galeria-titulo">Gente, máquinas e o tempo entre um ciclo e outro.</h2>
+            <h2 id="galeria-titulo">Lave e seque no seu tempo, em qualquer ponto da cidade.</h2>
             <p class="muted">Da porta que abre ao pagamento no cartão. Um passeio pelas cenas que acontecem todo dia na PopLavanderia.</p>
           </div>
 
@@ -238,7 +208,37 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="como-funciona">
+      <section class="hero">
+        <canvas class="hero-canvas" data-bubbles aria-hidden="true"></canvas>
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Curitiba · self-service inteligente</p>
+            <h1>Gente, máquinas e o tempo entre um ciclo e outro.</h1>
+            <p class="lede">A PopLavanderia une máquinas com tempo certo, cobrança em créditos pelo celular e um lounge para esperar sem pressa.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="#cadastro">Começar a lavar</a>
+              <a class="btn btn-ghost btn-lg" href="/unidades.html">Ver unidades</a>
+            </div>
+            <div class="hero-stats" aria-label="Números da rede">
+              <span>8 unidades</span>
+              <span>Lavar 32 a 45 min</span>
+              <span>Secar 20 a 50 min</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img
+              src="images/hero-principal.png"
+              alt="Lavanderia self-service com lavadoras, parede azul e laranja e identidade Lava &amp; Seca"
+              width="1400"
+              height="788"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+<section class="section" aria-labelledby="como-funciona">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Simples de verdade</p>
@@ -316,6 +316,226 @@
           <a class="btn btn-ghost" href="/unidades.html">Explorar unidades</a>
         </div>
       </section>
+      <section class="section section-cadastro" id="cadastro" aria-labelledby="cadastro-titulo">
+        <div class="container">
+          <form id="form-cadastro" class="form-card card form-card--wide" novalidate>
+            <p class="eyebrow">Cadastro completo</p>
+            <h2 id="cadastro-titulo">Vamos te conhecer para cuidar da sua lavagem.</h2>
+            <p class="muted" data-step-label>Etapa 1 de 4 — Dados pessoais</p>
+            <div class="progress" data-progress aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+            <div data-step="1">
+              <fieldset class="form-fieldset">
+                <legend>Identificação</legend>
+                <div class="form-grid">
+                  <div class="form-field span-2">
+                    <label class="field-label" for="cadastro-nomeCompleto">Nome completo (como no documento)</label>
+                    <input id="cadastro-nomeCompleto" name="nomeCompleto" autocomplete="name" required />
+                    <span class="field-error" data-error="nomeCompleto"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-nomeSocial">Nome social <span class="label-hint">(opcional)</span></label>
+                    <input id="cadastro-nomeSocial" name="nomeSocial" autocomplete="nickname" />
+                    <span class="field-error" data-error="nomeSocial"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-cpf">CPF</label>
+                    <input id="cadastro-cpf" name="cpf" inputmode="numeric" autocomplete="off" required />
+                    <span class="field-error" data-error="cpf"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-rg">RG <span class="label-hint">(opcional)</span></label>
+                    <input id="cadastro-rg" name="rg" autocomplete="off" />
+                    <span class="field-error" data-error="rg"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-dataNascimento">Data de nascimento</label>
+                    <input id="cadastro-dataNascimento" name="dataNascimento" type="date" required />
+                    <span class="field-error" data-error="dataNascimento"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-genero">Gênero</label>
+                    <select id="cadastro-genero" name="genero">
+                      <option value="prefiro_nao_informar">Prefiro não informar</option>
+                      <option value="feminino">Feminino</option>
+                      <option value="masculino">Masculino</option>
+                      <option value="nao_binario">Não-binário</option>
+                      <option value="outro">Outro</option>
+                    </select>
+                    <span class="field-error" data-error="genero"></span>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="card-actions">
+                <button class="btn btn-primary" type="button" data-next>Continuar para contato</button>
+              </div>
+            </div>
+
+            <div data-step="2" hidden>
+              <fieldset class="form-fieldset">
+                <legend>Contato</legend>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-email">E-mail</label>
+                    <input id="cadastro-email" name="email" type="email" autocomplete="email" required />
+                    <span class="field-error" data-error="email"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-confirmarEmail">Confirmar e-mail</label>
+                    <input id="cadastro-confirmarEmail" name="confirmarEmail" type="email" autocomplete="email" required />
+                    <span class="field-error" data-error="confirmarEmail"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-telefone">Celular / WhatsApp</label>
+                    <input id="cadastro-telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required />
+                    <span class="field-error" data-error="telefone"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-telefoneSecundario">Telefone alternativo <span class="label-hint">(opcional)</span></label>
+                    <input id="cadastro-telefoneSecundario" name="telefoneSecundario" type="tel" inputmode="tel" autocomplete="tel" />
+                    <span class="field-error" data-error="telefoneSecundario"></span>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-fieldset">
+                <legend>Contato de emergência <span class="label-hint">(opcional)</span></legend>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-contatoEmergenciaNome">Nome do contato</label>
+                    <input id="cadastro-contatoEmergenciaNome" name="contatoEmergenciaNome" autocomplete="name" />
+                    <span class="field-error" data-error="contatoEmergenciaNome"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-contatoEmergenciaTelefone">Telefone do contato</label>
+                    <input id="cadastro-contatoEmergenciaTelefone" name="contatoEmergenciaTelefone" type="tel" inputmode="tel" />
+                    <span class="field-error" data-error="contatoEmergenciaTelefone"></span>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="card-actions">
+                <button class="btn btn-ghost" type="button" data-prev>Voltar</button>
+                <button class="btn btn-primary" type="button" data-next>Continuar para endereço</button>
+              </div>
+            </div>
+
+            <div data-step="3" hidden>
+              <fieldset class="form-fieldset">
+                <legend>Endereço residencial</legend>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-cep">CEP</label>
+                    <input id="cadastro-cep" name="cep" inputmode="numeric" autocomplete="postal-code" required />
+                    <span class="field-error" data-error="cep"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-numero">Número</label>
+                    <input id="cadastro-numero" name="numero" required />
+                    <span class="field-error" data-error="numero"></span>
+                  </div>
+                  <div class="form-field span-2">
+                    <label class="field-label" for="cadastro-logradouro">Logradouro</label>
+                    <input id="cadastro-logradouro" name="logradouro" autocomplete="street-address" required />
+                    <span class="field-error" data-error="logradouro"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-complemento">Complemento <span class="label-hint">(opcional)</span></label>
+                    <input id="cadastro-complemento" name="complemento" autocomplete="address-line2" />
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-bairro">Bairro</label>
+                    <input id="cadastro-bairro" name="bairro" required />
+                    <span class="field-error" data-error="bairro"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-cidade">Cidade</label>
+                    <input id="cadastro-cidade" name="cidade" value="Curitiba" required />
+                    <span class="field-error" data-error="cidade"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-estado">Estado</label>
+                    <input id="cadastro-estado" name="estado" value="PR" maxlength="2" required />
+                    <span class="field-error" data-error="estado"></span>
+                  </div>
+                  <div class="form-field span-2">
+                    <label class="field-label" for="cadastro-referencia">Ponto de referência <span class="label-hint">(opcional)</span></label>
+                    <input id="cadastro-referencia" name="referencia" placeholder="Ex.: prédio azul, portaria 24h" />
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-fieldset">
+                <legend>Preferências na rede</legend>
+                <div class="form-grid">
+                  <div class="form-field span-2">
+                    <label class="field-label" for="cadastro-unidadePreferida">Unidade que você mais pretende usar</label>
+                    <select id="cadastro-unidadePreferida" name="unidadePreferida" required data-store-select>
+                      <option value="">Selecione uma unidade</option>
+                    </select>
+                    <span class="field-error" data-error="unidadePreferida"></span>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="card-actions">
+                <button class="btn btn-ghost" type="button" data-prev>Voltar</button>
+                <button class="btn btn-primary" type="button" data-next>Continuar para senha</button>
+              </div>
+            </div>
+
+            <div data-step="4" hidden>
+              <fieldset class="form-fieldset">
+                <legend>Acesso e segurança</legend>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-senha">Senha</label>
+                    <input id="cadastro-senha" name="senha" type="password" autocomplete="new-password" required />
+                    <span class="password-meter" data-password-meter></span>
+                    <span class="field-error" data-error="senha"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="field-label" for="cadastro-confirmarSenha">Confirmar senha</label>
+                    <input id="cadastro-confirmarSenha" name="confirmarSenha" type="password" autocomplete="new-password" required />
+                    <span class="field-error" data-error="confirmarSenha"></span>
+                  </div>
+                  <div class="form-field span-2">
+                    <label class="field-label" for="cadastro-comoConheceu">Como conheceu a PopLavanderia? <span class="label-hint">(opcional)</span></label>
+                    <select id="cadastro-comoConheceu" name="comoConheceu">
+                      <option value="">Selecione</option>
+                      <option value="indicacao">Indicação de amigo ou familiar</option>
+                      <option value="redes_sociais">Redes sociais</option>
+                      <option value="google">Busca no Google</option>
+                      <option value="passando_pela_loja">Passei em frente à loja</option>
+                      <option value="condominio">Condomínio ou empresa</option>
+                      <option value="outro">Outro</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-fieldset form-fieldset--checks">
+                <legend>Termos e comunicações</legend>
+                <label class="check">
+                  <input name="aceitaTermos" type="checkbox" required />
+                  Li e aceito os <a href="/sobre.html">termos de uso</a> da PopLavanderia.
+                </label>
+                <span class="field-error" data-error="aceitaTermos"></span>
+                <label class="check">
+                  <input name="aceitaPoliticaPrivacidade" type="checkbox" required />
+                  Autorizo o tratamento dos meus dados conforme a política de privacidade (LGPD).
+                </label>
+                <span class="field-error" data-error="aceitaPoliticaPrivacidade"></span>
+                <label class="check">
+                  <input name="aceitaNovidades" type="checkbox" />
+                  Quero receber novidades, promoções e avisos das unidades por e-mail ou WhatsApp.
+                </label>
+              </fieldset>
+              <div class="card-actions">
+                <button class="btn btn-ghost" type="button" data-prev>Voltar</button>
+                <button class="btn btn-primary" type="submit">Criar conta e ganhar 20 créditos</button>
+              </div>
+            </div>
+            <p class="muted">Já tem conta? <a href="/login.html">Entrar</a></p>
+          </form>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">

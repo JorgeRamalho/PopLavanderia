@@ -1,18 +1,9 @@
 import fs from "node:fs";
+import { pageRoutes } from "./page-routes.mjs";
 
-const files = [
-  "index.html",
-  "sobre.html",
-  "servicos.html",
-  "unidades.html",
-  "cadastro.html",
-  "login.html",
-  "app.html",
-  "conta.html",
-  "recuperar-senha.html",
-];
+const files = ["index.html", ...Object.values(pageRoutes)];
 
-const tag = '    <script defer src="header-scroll.js"></script>\n';
+const tag = '    <script defer src="/header-scroll.js"></script>\n';
 const needle = 'type="image/svg+xml" />\n';
 
 for (const file of files) {
